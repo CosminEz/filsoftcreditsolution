@@ -1,36 +1,52 @@
 package com.filsoft.filsoftcreditsolutionproject.model;
 
+import java.util.List;
+
 public class Credit {
-    private Rata rata;
+    private List<Rata> rataList;
+    private String nume;
     private Integer perioada;
+    private Integer fiscalCode;
 
-    public Credit(){
-        this.perioada=0;
-        this.rata=new Rata();
+    public Credit(List<Rata> rataList, String nume, Integer perioada, Integer fiscalCode) {
+        this.rataList = rataList;
+        this.nume = nume;
+        this.perioada = perioada;
+        this.fiscalCode = fiscalCode;
     }
 
-    public Credit(Rata rata,Integer perioada){
-        this.rata=rata;
-        this.perioada=perioada;
+    public Credit() {
     }
 
-    public Credit(Credit credit){
-        this.rata=credit.getRata();
-        this.perioada=credit.getPerioada();
+    public List<Rata> getRataList() {
+        return rataList;
     }
-    public Integer getPerioada(){
+
+    public String getNume() {
+        return nume;
+    }
+
+    public Integer getPerioada() {
         return perioada;
     }
 
-    public Rata getRata(){
-        return rata;
+    public Integer getFiscalCode() {
+        return fiscalCode;
     }
 
-    public void setPerioada(Integer perioada){
-        this.perioada=perioada;
+    public void setRataList(List<Rata> rataList) {
+        this.rataList = rataList;
     }
 
-    public void setRata(Rata rata){
-        this.rata=rata;
+    public void setNume(String nume) {
+        this.nume = nume;
+    }
+
+    public void setPerioada(Integer perioada) {
+        this.perioada = perioada;
+    }
+
+    public void setFiscalCode(Integer fiscalCode) {
+        this.fiscalCode = fiscalCode;
     }
 }
