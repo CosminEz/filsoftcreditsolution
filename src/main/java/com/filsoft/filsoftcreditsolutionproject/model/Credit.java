@@ -1,52 +1,35 @@
 package com.filsoft.filsoftcreditsolutionproject.model;
 
-import java.util.List;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.List;
+import java.util.UUID;
+
+
+@Entity
+@Getter
+@Setter
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "credit")
 public class Credit {
-    private List<Rata> rataList;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(name = "nume")
     private String nume;
+
+    @Column(name = "perioada")
     private Integer perioada;
+
+    @Column(name = "fiscal_code")
     private Integer fiscalCode;
 
-    public Credit(List<Rata> rataList, String nume, Integer perioada, Integer fiscalCode) {
-        this.rataList = rataList;
-        this.nume = nume;
-        this.perioada = perioada;
-        this.fiscalCode = fiscalCode;
-    }
-
-    public Credit() {
-    }
-
-    public List<Rata> getRataList() {
-        return rataList;
-    }
-
-    public String getNume() {
-        return nume;
-    }
-
-    public Integer getPerioada() {
-        return perioada;
-    }
-
-    public Integer getFiscalCode() {
-        return fiscalCode;
-    }
-
-    public void setRataList(List<Rata> rataList) {
-        this.rataList = rataList;
-    }
-
-    public void setNume(String nume) {
-        this.nume = nume;
-    }
-
-    public void setPerioada(Integer perioada) {
-        this.perioada = perioada;
-    }
-
-    public void setFiscalCode(Integer fiscalCode) {
-        this.fiscalCode = fiscalCode;
-    }
+    @OneToMany(mappedBy = "credit", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    private List<Rata> rataList;
 }

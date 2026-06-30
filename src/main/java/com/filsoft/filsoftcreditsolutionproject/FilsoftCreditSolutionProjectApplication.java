@@ -1,30 +1,40 @@
 package com.filsoft.filsoftcreditsolutionproject;
 
 import com.filsoft.filsoftcreditsolutionproject.model.Credit;
-import com.filsoft.filsoftcreditsolutionproject.model.Rata;
+import com.filsoft.filsoftcreditsolutionproject.service.CreditService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
-import java.util.List;
+import java.util.UUID;
+
 
 @SpringBootApplication
 public class FilsoftCreditSolutionProjectApplication {
 
     public static void main(String[] args) {
-        System.out.println("Salut");
 
-        Rata rataNou1 = new Rata(100, 200);
-        Rata rataNou2= new Rata(300,100);
-        Credit creditNou = new Credit();
+        // 1. Pornim aplicatia si obtinem contextul Spring
+        ConfigurableApplicationContext context =
+                SpringApplication.run(FilsoftCreditSolutionProjectApplication.class, args);
 
-        System.out.println("Pentru acest credit, rata este: " + creditNou.getRataList() + " si perioada este: "+ creditNou.getPerioada());
-        creditNou.setRataList(List.of(rataNou1,rataNou2));
-        Integer perioadaNou= 360;
-        creditNou.setPerioada(perioadaNou);
-        System.out.println("Pentru acest credit, rata este: " + creditNou.getRataList() + " si perioada este: "+ creditNou.getPerioada());
+        // 2. Luam beanul CreditService din context (are deja CreditRepository injectat)
+        CreditService creditService = context.getBean(CreditService.class);
+
+        // 3. Construim Creditul (fara id, e generat automat de @GeneratedValue)
+        Credit credit = Credit.builder()
+                .nume("Credit Test Nou")
+                .perioada(123)
+                .fiscalCode(1)
+                .build();
+
+        // 4. Salvam in baza de date prin service
+//        creditService.saveCredit(credit);
+
+        creditService.deleteCredit(UUID.fromString("5d5874a5-9454-499b-abf3-ab93c46c8791"));
 
 
-        SpringApplication.run(FilsoftCreditSolutionProjectApplication.class, args);
+        System.out.println("Credit salvat cu id: " + credit.getId());
     }
 
 }
