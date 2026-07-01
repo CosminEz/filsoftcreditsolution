@@ -1,6 +1,7 @@
 package com.filsoft.filsoftcreditsolutionproject;
 
 import com.filsoft.filsoftcreditsolutionproject.model.Credit;
+import com.filsoft.filsoftcreditsolutionproject.model.Rata;
 import com.filsoft.filsoftcreditsolutionproject.service.CreditService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -59,6 +60,19 @@ public class FilsoftCreditSolutionProjectApplication {
         List<Credit> list = creditService.getAllCredits();
         System.out.println(list + " size: " + list.size());
 //        System.out.println("Credit salvat cu id: " + credit.getId());
+
+        Rata rata1= Rata.builder()
+                .principal(300)
+                .dobanda(200)
+                .build();
+
+        Rata rata2=Rata.builder()
+                .principal(800)
+                .dobanda(400)
+                .build();
+        List<Rata> rataList=List.of(rata1,rata2);
+        creditAudi.setRataList(rataList);
+        creditService.saveCredit(creditAudi);
     }
 
 }

@@ -9,6 +9,8 @@ import java.util.UUID;
 
 @Entity
 @ToString
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,12 +33,4 @@ public class Credit {
     @ToString.Exclude
     private List<Rata> rataList;
 
-    public String getNume() {
-        return nume;
-    }
-
-
-    public void setNume(String nume) {
-        this.nume = nume;
-    }
 }
