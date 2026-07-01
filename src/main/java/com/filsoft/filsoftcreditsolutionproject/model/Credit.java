@@ -8,8 +8,6 @@ import java.util.UUID;
 
 
 @Entity
-@Getter
-@Setter
 @ToString
 @Builder
 @NoArgsConstructor
@@ -32,4 +30,11 @@ public class Credit {
     @OneToMany(mappedBy = "credit", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<Rata> rataList;
+
+    public String getNume(){
+        return nume;
+    }
+    public void setNume(String nume){
+        this.nume=nume;
+    }
 }

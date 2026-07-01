@@ -24,4 +24,6 @@ public class CreditService {
     public void deleteCredit(UUID id){
         creditRepository.deleteById(id);
     }
+
+    public Credit getCredit(UUID id){return creditRepository.getReferenceById(id);}
 }
