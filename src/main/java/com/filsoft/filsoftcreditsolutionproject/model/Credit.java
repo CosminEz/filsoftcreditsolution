@@ -2,6 +2,7 @@ package com.filsoft.filsoftcreditsolutionproject.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.repository.cdi.Eager;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class Credit {
     @Column(name = "fiscal_code")
     private Integer fiscalCode;
 
-    @OneToMany(mappedBy = "credit", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "credit", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @ToString.Exclude
     private List<Rata> rataList;
 

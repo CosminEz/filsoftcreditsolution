@@ -10,3 +10,4 @@ import java.util.UUID;
 @Repository
 public interface CreditRepository extends JpaRepository<Credit, UUID> {
 }
+
