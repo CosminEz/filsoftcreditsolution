@@ -21,7 +21,7 @@ public class Rata {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "credit_id")
+    @JoinColumn(name = "id_credit")
     @ToString.Exclude
     private Credit credit;
 

@@ -33,4 +33,15 @@ public class Credit {
     @ToString.Exclude
     private List<Rata> rataList;
 
+    /**
+     * Sets the rata list and keeps both sides of the relationship in sync,
+     * so the foreign key column (credit_id) on each Rata is populated.
+     */
+    public void setRataList(List<Rata> rataList) {
+        this.rataList = rataList;
+        if (rataList != null) {
+            rataList.forEach(rata -> rata.setCredit(this));
+        }
+    }
+
 }
