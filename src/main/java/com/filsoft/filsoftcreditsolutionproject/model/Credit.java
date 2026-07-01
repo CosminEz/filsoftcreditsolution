@@ -31,10 +31,12 @@ public class Credit {
     @ToString.Exclude
     private List<Rata> rataList;
 
-    public String getNume(){
+    public String getNume() {
         return nume;
     }
-    public void setNume(String nume){
-        this.nume=nume;
+
+
+    public void setNume(String nume) {
+        this.nume = nume;
     }
 }

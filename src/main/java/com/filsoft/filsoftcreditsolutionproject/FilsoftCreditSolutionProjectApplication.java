@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -54,6 +55,9 @@ public class FilsoftCreditSolutionProjectApplication {
         Credit creditAudi=creditService.getCredit(UUID.fromString("a2b84b25-b3d6-4cc0-87a6-2d47361dabee"));
         creditAudi.setNume("BMW");
         creditService.saveCredit(creditAudi);
+
+        List<Credit> list = creditService.getAllCredits();
+        System.out.println(list + " size: " + list.size());
 //        System.out.println("Credit salvat cu id: " + credit.getId());
     }
 

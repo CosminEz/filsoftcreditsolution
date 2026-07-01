@@ -5,6 +5,7 @@ import com.filsoft.filsoftcreditsolutionproject.repository.CreditRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -25,5 +26,10 @@ public class CreditService {
         creditRepository.deleteById(id);
     }
 
-    public Credit getCredit(UUID id){return creditRepository.getReferenceById(id);}
+    public Credit getCredit(UUID id){
+        return creditRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Credit not found with id: " + id));
+    }
+
+    public List<Credit> getAllCredits(){return creditRepository.findAll();}
 }
