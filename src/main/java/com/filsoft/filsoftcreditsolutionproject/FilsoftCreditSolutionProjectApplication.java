@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -53,6 +54,8 @@ public class FilsoftCreditSolutionProjectApplication {
 //                .fiscalCode(3290)
 //                .build();
 
+
+
         Credit creditAudi=creditService.getCredit(UUID.fromString("a2b84b25-b3d6-4cc0-87a6-2d47361dabee"));
 //        creditAudi.setNume("BMW");
 //        creditService.saveCredit(creditAudi);
@@ -74,14 +77,102 @@ public class FilsoftCreditSolutionProjectApplication {
 //        creditAudi.setRataList(rataList);
 //        creditService.saveCredit(creditAudi);
 
-        List<Rata> rataCreditAudi = creditAudi.getRataList();
+          List<Rata> rataCreditAudi = creditAudi.getRataList();
         System.out.printf("Rata list for credit %s: %s%n", creditAudi.getNume(), rataCreditAudi);
 
         rataCreditAudi.remove(1);
-
         creditAudi.setRataList(rataCreditAudi);
 
         creditService.saveCredit(creditAudi);
-    }
 
+//        //TEMA
+//        Credit creditT1 = Credit.builder()
+//                .nume("CreditTema1")
+//                .perioada(120)
+//                .fiscalCode(100)
+//                .build();
+//
+//        Credit creditT2 = Credit.builder()
+//                .nume("CreditTema2")
+//                .perioada(240)
+//                .fiscalCode(200)
+//                .build();
+//
+//        Credit creditT3 = Credit.builder()
+//                .nume("CreditTema3")
+//                .perioada(360)
+//                .fiscalCode(300)
+//                .build();
+//
+//        Credit creditT4 = Credit.builder()
+//                .nume("CreditTema4")
+//                .perioada(480)
+//                .fiscalCode(400)
+//                .build();
+//
+//        creditService.saveCredit(creditT1);
+//        creditService.saveCredit(creditT2);
+//        creditService.saveCredit(creditT3);
+//        creditService.saveCredit(creditT4);
+//
+//        creditT2.setNume("Credit999");
+//        creditService.saveCredit(creditT2);
+//
+//        creditService.deleteCredit(creditT3.getId());
+//
+//        creditT4.setPerioada(1000);
+//        creditService.saveCredit(creditT4);
+//
+//        creditT1.setFiscalCode(1111);
+//        creditService.saveCredit(creditT1);
+////2
+//        List<Rata> rataList = new ArrayList<>();
+//
+//        for (int i = 1; i <= 10; i++) {
+//
+//            Rata rata = Rata.builder()
+//                    .principal(i * 1000)
+//                    .dobanda(i * 300 - 50)
+//                    .build();
+//
+//            rata.setCredit(creditT4);
+//            rataList.add(rata);
+//
+//
+//        }
+//
+//        creditT4.setRataList(rataList);
+//        creditService.saveCredit(creditT4);
+//        creditT4.getRataList().remove(6);
+//        creditService.saveCredit(creditT4);
+//
+//        Rata rataNoua1 = Rata.builder()
+//                .principal(500)
+//                .dobanda(150)
+//                .build();
+//
+//        Rata rataNoua2 = Rata.builder()
+//                .principal(1600)
+//                .dobanda(400)
+//                .build();
+//
+//        Rata rataNoua3 = Rata.builder()
+//                .principal(2700)
+//                .dobanda(650)
+//                .build();
+//
+//
+//        rataNoua1.setCredit(creditT4);
+//        rataNoua2.setCredit(creditT4);
+//        rataNoua3.setCredit(creditT4);
+//
+//
+//       creditT4.getRataList().add(rataNoua1);
+//        creditT4.getRataList().add(rataNoua2);
+//        creditT4.getRataList().add(rataNoua3);
+//
+//
+//        creditService.saveCredit(creditT4);
+//    }
+//
 }
