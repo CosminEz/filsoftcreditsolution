@@ -3,6 +3,7 @@ package com.filsoft.filsoftcreditsolutionproject;
 import com.filsoft.filsoftcreditsolutionproject.model.Credit;
 import com.filsoft.filsoftcreditsolutionproject.model.Rata;
 import com.filsoft.filsoftcreditsolutionproject.service.CreditService;
+import com.filsoft.filsoftcreditsolutionproject.service.RataService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -23,6 +24,7 @@ public class FilsoftCreditSolutionProjectApplication {
 
         // 2. Luam beanul CreditService din context (are deja CreditRepository injectat)
         CreditService creditService = context.getBean(CreditService.class);
+        RataService rataService = context.getBean(RataService.class);
 //
 //        // 3. Construim Creditul (fara id, e generat automat de @GeneratedValue)
 //        Credit credit = Credit.builder()
@@ -55,8 +57,7 @@ public class FilsoftCreditSolutionProjectApplication {
 //                .build();
 
 
-
-        Credit creditAudi=creditService.getCredit(UUID.fromString("a2b84b25-b3d6-4cc0-87a6-2d47361dabee"));
+        //  Credit creditAudi=creditService.getCredit(UUID.fromString("a2b84b25-b3d6-4cc0-87a6-2d47361dabee"));
 //        creditAudi.setNume("BMW");
 //        creditService.saveCredit(creditAudi);
 //
@@ -77,55 +78,48 @@ public class FilsoftCreditSolutionProjectApplication {
 //        creditAudi.setRataList(rataList);
 //        creditService.saveCredit(creditAudi);
 
-          List<Rata> rataCreditAudi = creditAudi.getRataList();
-        System.out.printf("Rata list for credit %s: %s%n", creditAudi.getNume(), rataCreditAudi);
-
-        rataCreditAudi.remove(1);
-        creditAudi.setRataList(rataCreditAudi);
-
-        creditService.saveCredit(creditAudi);
 
 //        //TEMA
-//        Credit creditT1 = Credit.builder()
-//                .nume("CreditTema1")
-//                .perioada(120)
-//                .fiscalCode(100)
-//                .build();
+        Credit creditT1 = Credit.builder()
+                .nume("CreditTema1")
+                .perioada(120)
+                .fiscalCode(100)
+                .build();
 //
-//        Credit creditT2 = Credit.builder()
-//                .nume("CreditTema2")
-//                .perioada(240)
-//                .fiscalCode(200)
-//                .build();
+        Credit creditT2 = Credit.builder()
+                .nume("CreditTema2")
+                .perioada(240)
+                .fiscalCode(200)
+                .build();
 //
-//        Credit creditT3 = Credit.builder()
-//                .nume("CreditTema3")
-//                .perioada(360)
-//                .fiscalCode(300)
-//                .build();
+        Credit creditT3 = Credit.builder()
+                .nume("CreditTema3")
+                .perioada(360)
+                .fiscalCode(300)
+                .build();
 //
-//        Credit creditT4 = Credit.builder()
-//                .nume("CreditTema4")
-//                .perioada(480)
-//                .fiscalCode(400)
-//                .build();
-//
-//        creditService.saveCredit(creditT1);
-//        creditService.saveCredit(creditT2);
-//        creditService.saveCredit(creditT3);
-//        creditService.saveCredit(creditT4);
+        Credit creditT4 = Credit.builder()
+                .nume("CreditTema4")
+                .perioada(480)
+                .fiscalCode(400)
+                .build();
+
+        creditService.saveCredit(creditT1);
+        creditService.saveCredit(creditT2);
+        creditService.saveCredit(creditT3);
+        creditService.saveCredit(creditT4);}}
 //
 //        creditT2.setNume("Credit999");
 //        creditService.saveCredit(creditT2);
-//
-//        creditService.deleteCredit(creditT3.getId());
-//
+////
+//      //  creditService.deleteCredit("2f82cd26-299f-416e-bb84-f199dbe86ba3");
+////
 //        creditT4.setPerioada(1000);
 //        creditService.saveCredit(creditT4);
-//
-//        creditT1.setFiscalCode(1111);
-//        creditService.saveCredit(creditT1);
-////2
+////
+//   creditT1.setFiscalCode(1111);
+//  creditService.saveCredit(creditT1);}}
+//2
 //        List<Rata> rataList = new ArrayList<>();
 //
 //        for (int i = 1; i <= 10; i++) {
@@ -174,5 +168,41 @@ public class FilsoftCreditSolutionProjectApplication {
 //
 //        creditService.saveCredit(creditT4);
 //    }
+
+//TEMA
+//        Rata rata10 = Rata.builder()
+//                .principal(500)
+//                .dobanda(150)
+//                .build();
 //
-}
+//        Rata rata11 = Rata.builder()
+//                .principal(1000)
+//                .dobanda(250)
+//                .build();
+//
+//        Rata rata12 = Rata.builder()
+//                .principal(1500)
+//                .dobanda(350)
+//                .build();
+//
+//        Rata rata13 = Rata.builder()
+//                .principal(2000)
+//                .dobanda(300)
+//                .build();
+//
+//        Rata rata14 = Rata.builder()
+//                .principal(3390)
+//                .dobanda(550)
+//                .build();
+//        rata10.setCredit(creditT2);
+//        rata11.setCredit(creditT2);
+//        rata12.setCredit(creditT1);
+//        rata13.setCredit(creditT3);
+//        rata14.setCredit(creditT1);
+//
+//        rataService.saveRata(rata10);
+//        rataService.saveRata(rata11);
+//        rataService.saveRata(rata12);
+//        rataService.saveRata(rata13);
+//        rataService.saveRata(rata14);
+//    }}

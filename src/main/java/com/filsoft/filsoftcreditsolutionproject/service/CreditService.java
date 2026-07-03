@@ -1,7 +1,9 @@
 package com.filsoft.filsoftcreditsolutionproject.service;
 
 import com.filsoft.filsoftcreditsolutionproject.model.Credit;
+import com.filsoft.filsoftcreditsolutionproject.model.Rata;
 import com.filsoft.filsoftcreditsolutionproject.repository.CreditRepository;
+import com.filsoft.filsoftcreditsolutionproject.repository.RataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,12 @@ public class CreditService {
 
     public void deleteCredit(UUID id){
         creditRepository.deleteById(id);
+    }
+
+    @Autowired
+    private RataRepository rataRepository;
+    public List<Rata> getListOfRata(Credit credit) {
+        return rataRepository.findByCreditId(credit.getId());
     }
 
     public Credit getCredit(UUID id){
