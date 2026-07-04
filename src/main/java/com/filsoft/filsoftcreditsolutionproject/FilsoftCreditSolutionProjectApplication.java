@@ -102,21 +102,22 @@ public class FilsoftCreditSolutionProjectApplication {
                 .nume("CreditTema4")
                 .perioada(480)
                 .fiscalCode(400)
-                .build();
-
-        creditService.saveCredit(creditT1);
-        creditService.saveCredit(creditT2);
-        creditService.saveCredit(creditT3);
-        creditService.saveCredit(creditT4);}}
+                .build(); }
 //
-//        creditT2.setNume("Credit999");
+//        creditService.saveCredit(creditT1);
 //        creditService.saveCredit(creditT2);
-////
-//      //  creditService.deleteCredit("2f82cd26-299f-416e-bb84-f199dbe86ba3");
-////
+//        creditService.saveCredit(creditT3);
+//        creditService.saveCredit(creditT4);}}
+
+
+//      creditT2.setNume("Credit999");
+//       creditService.saveCredit(creditT2);
+//////
+//     //  creditService.deleteCredit("2f82cd26-299f-416e-bb84-f199dbe86ba3");
+//////
 //        creditT4.setPerioada(1000);
 //        creditService.saveCredit(creditT4);
-////
+//////
 //   creditT1.setFiscalCode(1111);
 //  creditService.saveCredit(creditT1);}}
 //2
@@ -167,9 +168,9 @@ public class FilsoftCreditSolutionProjectApplication {
 //
 //
 //        creditService.saveCredit(creditT4);
-//    }
+//    }}
 
-//TEMA
+////TEMA
 //        Rata rata10 = Rata.builder()
 //                .principal(500)
 //                .dobanda(150)
