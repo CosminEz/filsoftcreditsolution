@@ -22,14 +22,12 @@ public class CreditController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<String> createCredit() {
 
-        Credit creditT1 = Credit.builder()
-                .nume("CreditTema1")
-                .perioada(120)
-                .fiscalCode(100)
-                .build();
 
+    public ResponseEntity<String> createCredit(@RequestBody CreditDTO creditDTO) {
+
+
+        Credit creditT1 = creditDTO.toCredit();
         creditService.saveCredit(creditT1);
         // Logic to create a credit
         return ResponseEntity.ok("Credit created successfully with ID: " + creditT1.getId());
