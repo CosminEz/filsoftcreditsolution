@@ -3,6 +3,7 @@ package com.filsoft.filsoftcreditsolutionproject.controller;
 import com.filsoft.filsoftcreditsolutionproject.model.Credit;
 import com.filsoft.filsoftcreditsolutionproject.model.Rata;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -66,12 +67,22 @@ public class CreditResponseDTO {
     }
 
     public CreditResponseDTO fromCredit(Credit credit) {
+
+        List<Rata> rataList = credit.getRataList();
+
+        List<RataResponseDTO> rataResponseDTOList = new ArrayList<>();
+
+        for(int i=0; i< rataList.size(); i++){
+            RataResponseDTO newRata = RataResponseDTO.fromRata(rataList.get(i));
+            rataResponseDTOList.add(newRata);
+        }
+
         return new CreditResponseDTO(
                 credit.getId(),
                 credit.getNume(),
                 credit.getPerioada(),
                 credit.getFiscalCode(),
-                credit.getRataList().forEach(rata -> new RataResponseDTO(rata)));
+                rataResponseDTOList);
 
     }
 }

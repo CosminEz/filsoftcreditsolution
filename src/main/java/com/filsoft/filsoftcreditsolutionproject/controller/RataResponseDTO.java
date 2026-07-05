@@ -42,7 +42,7 @@ public class RataResponseDTO {
         this.dobanda = dobanda;
     }
 
-    public RataResponseDTO(Rata rata) {
+    public static RataResponseDTO  fromRata(Rata rata) {
         return new RataResponseDTO(rata.getId(), rata.getPrincipal(), rata.getDobanda());
     }
 }
