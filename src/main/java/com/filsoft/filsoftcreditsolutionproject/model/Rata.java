@@ -4,8 +4,6 @@ package com.filsoft.filsoftcreditsolutionproject.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.UUID;
-
 @Entity
 @Getter
 @Setter
@@ -14,12 +12,13 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "rata")
+@IdClass(RataId.class)
 public class Rata {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private Integer id;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "id_credit")
     @ToString.Exclude
@@ -30,4 +29,7 @@ public class Rata {
 
     @Column(name = "dobanda")
     private Integer dobanda;
+
+    @Column(name = "status")
+    private Boolean status;
 }

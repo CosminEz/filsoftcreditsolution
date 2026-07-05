@@ -13,18 +13,47 @@ public class CreditResponseDTO {
     private Integer perioada;
     private Integer fiscalCode;
     private List<RataResponseDTO> rataList;
+    private Integer dobandaTotala;
+    private Integer principalTotal;
+    private Double rataLunaraCosntanta;
 
     public CreditResponseDTO() {
     }
 
-    public CreditResponseDTO(UUID id, String nume, Integer perioada, Integer fiscalCode, List<RataResponseDTO> rataList) {
+    public CreditResponseDTO(UUID id, String nume, Integer perioada, Integer fiscalCode, List<RataResponseDTO> rataList, Integer dobandaTotala, Integer principalTotal, Double rataLunaraCosntanta) {
         this.id = id;
         this.nume = nume;
         this.perioada = perioada;
         this.fiscalCode = fiscalCode;
         this.rataList = rataList;
+        this.dobandaTotala = dobandaTotala;
+        this.principalTotal = principalTotal;
+        this.rataLunaraCosntanta = rataLunaraCosntanta;
     }
 
+    public Integer getPrincipalTotal() {
+        return principalTotal;
+    }
+
+    public void setPrincipalTotal(Integer principalTotal) {
+        this.principalTotal = principalTotal;
+    }
+
+    public Integer getDobandaTotala() {
+        return dobandaTotala;
+    }
+
+    public void setDobandaTotala(Integer dobandaTotala) {
+        this.dobandaTotala = dobandaTotala;
+    }
+
+    public Double getRataLunaraCosntanta() {
+        return rataLunaraCosntanta;
+    }
+
+    public void setRataLunaraCosntanta(Double rataLunaraCosntanta) {
+        this.rataLunaraCosntanta = rataLunaraCosntanta;
+    }
 
     public UUID getId() {
         return id;
@@ -72,9 +101,18 @@ public class CreditResponseDTO {
 
         List<RataResponseDTO> rataResponseDTOList = new ArrayList<>();
 
+        int dobandaTotala = 0;
+        double rataLunaraConstanta = 0;
+        int principalTotal = 0;
+
         for(int i=0; i< rataList.size(); i++){
             RataResponseDTO newRata = RataResponseDTO.fromRata(rataList.get(i));
             rataResponseDTOList.add(newRata);
+
+            dobandaTotala = dobandaTotala + rataList.get(i).getDobanda();
+            principalTotal = principalTotal + rataList.get(i).getPrincipal();
+
+            rataLunaraConstanta = rataList.get(i).getPrincipal() + rataList.get(i).getDobanda();
         }
 
         return new CreditResponseDTO(
@@ -82,7 +120,11 @@ public class CreditResponseDTO {
                 credit.getNume(),
                 credit.getPerioada(),
                 credit.getFiscalCode(),
-                rataResponseDTOList);
+                rataResponseDTOList,
+                dobandaTotala,
+                principalTotal,
+                rataLunaraConstanta
+                );
 
     }
 }

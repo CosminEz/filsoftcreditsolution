@@ -22,17 +22,18 @@ public class RataService {
         rataRepository.saveAndFlush(rata);
     }
 
-    public void deleteRata(UUID id) {
-        rataRepository.deleteById(id);
-    }
-
-    public Rata getRataById(UUID id) {
-        return rataRepository.findById(id)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("Rata not found with id: " + id));
-    }
-
     public List<Rata> getAllRate() {
         return rataRepository.findAll();
+    }
+
+    public Rata getRataByIdCreditAndIdRata(UUID idCredit, Integer idRata){
+        return rataRepository.findByCreditIdAndId(idCredit, idRata)
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Rata not found for credit " + idCredit + " and rata id " + idRata));
+    }
+
+    public Rata payRata(Rata rata) {
+        rata.setStatus(true);
+        return rataRepository.saveAndFlush(rata);
     }
 }

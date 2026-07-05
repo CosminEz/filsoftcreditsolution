@@ -5,25 +5,35 @@ import com.filsoft.filsoftcreditsolutionproject.model.Rata;
 import java.util.UUID;
 
 public class RataResponseDTO {
-    private UUID id;
+    private Integer id;
     private Integer principal;
     private Integer dobanda;
+    private Boolean status;
 
     public RataResponseDTO() {
     }
 
-    public RataResponseDTO(UUID id, Integer principal, Integer dobanda) {
+    public RataResponseDTO(Integer id, Integer principal, Integer dobanda, Boolean status) {
         this.id = id;
         this.principal = principal;
         this.dobanda = dobanda;
+        this.status = status;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Integer getPrincipal() {
@@ -43,6 +53,6 @@ public class RataResponseDTO {
     }
 
     public static RataResponseDTO  fromRata(Rata rata) {
-        return new RataResponseDTO(rata.getId(), rata.getPrincipal(), rata.getDobanda());
+        return new RataResponseDTO(rata.getId(), rata.getPrincipal(), rata.getDobanda(), rata.getStatus());
     }
 }
