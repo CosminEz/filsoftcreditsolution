@@ -35,11 +35,11 @@ public class CreditController {
 
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Credit> getCredit(@PathVariable String id) {
+    public ResponseEntity<CreditResponseDTO> getCredit(@PathVariable String id) {
         Credit credit = creditService.getCredit(UUID.fromString(id));
         if (credit == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(credit);
+        return ResponseEntity.ok(CreditResponseDTO.fromCredit(credit));
     }
 }

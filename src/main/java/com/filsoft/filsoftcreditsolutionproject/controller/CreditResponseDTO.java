@@ -66,7 +66,7 @@ public class CreditResponseDTO {
         this.rataList = rataList;
     }
 
-    public CreditResponseDTO fromCredit(Credit credit) {
+    public static CreditResponseDTO fromCredit(Credit credit) {
 
         List<Rata> rataList = credit.getRataList();
 
