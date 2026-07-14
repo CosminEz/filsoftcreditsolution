@@ -127,7 +127,7 @@ const searchAlert = document.getElementById('searchAlert');
 const creditPanel = document.getElementById('creditPanel');
 const searchSpinner = document.getElementById('searchSpinner');
 
-searchBtn.addEventListener('click', loadCredit);
+searchBtn.addEventListener('click', () => loadCredit());
 searchId.addEventListener('keydown', e => { if (e.key === 'Enter') loadCredit(); });
 
 async function loadCredit(idOverride) {
